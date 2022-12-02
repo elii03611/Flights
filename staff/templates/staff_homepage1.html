@@ -1,0 +1,32 @@
+{% extends 'partials/base.html'%}
+{% load static %}
+
+
+{%block content%} <br><br><br><br><br>
+<style>
+    span {
+        background-color: black;
+    }
+</style>
+<div style="text-align: center">
+    <form action="./" style="text-align: center"> 
+
+        <input type="text" name="search customers" placeholder="Search Customers">
+        <button type="submit"> Search </button> 
+    
+    
+    <div style="font-size: 30px; color:red">
+    {%if customers%}
+        {%for customer in customers%}
+            <br>
+            <a href="{{customer.get_absolute_url}}"><span>{{customer}}</span></a><br> <br>
+            <br>
+        {%endfor%}
+    {%endif%} <br> <br>
+    </form>
+    <a href="{%url 'staff_homepage'%}">back to staff homepage</a>
+    </div>
+
+</div>
+
+    {%endblock content%}

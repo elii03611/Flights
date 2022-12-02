@@ -1,0 +1,24 @@
+{% extends 'partials/base.html' %}
+
+
+{% block content %}
+    <hr>
+
+    <h1>Profile User:</h1>
+
+    <div style="font-size: 20px">
+    Username: {{user.username}} <br>
+    Password: <a href="">Change password</a>  <br>
+    Email: {{profile.email}} <br> 
+    First name: {{profile.first_name}} <br>
+    Last name: {{profile.last_name}} <br>
+    Address: {{profile.address}} <br>
+    Phone Number: {{profile.phone_number}} <br>
+    Credit Card No: {{profile.credit_card_no}}
+    </div>
+    
+
+    <br><br>
+    <a href="{%url 'update_user'%}"> Update User </a> <br>
+
+{% endblock content%}

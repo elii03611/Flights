@@ -1,0 +1,23 @@
+{% extends 'partials/base.html' %} 
+
+    {%block content%} <hr>
+    <h1> Flights</h1>
+
+    
+    {% for flight in flights %} <br>
+        <div class="card-header">
+        </div>
+          <h5 class="card-title"></h5>
+          <p class="card-text"> </p>
+          
+          <a href="{{flight.get_absolute_url}}" class="btn btn-primary">{{flight}}</a> <br> <br>
+          {% if user.is_staff %}
+          <a href="{% url 'update_flight' flight.id %}" class="btn btn-primary">Update Flight</a> <br> <br>
+          <a href="{% url 'delete_flight' flight.id %}" class="btn btn-primary">Delete Flight</a>
+        </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+  
+      
+    {%endblock content%}

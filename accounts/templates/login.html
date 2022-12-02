@@ -1,0 +1,14 @@
+{% extends 'partials/base.html' %}
+
+{% block content %}
+
+    <h1> SignIN </h1>
+    <form method = 'post'>
+    {% csrf_token %}
+    {{form}}
+    <button type = 'submit'> SignIN </button>
+    </form>
+
+    <a href="{% url 'register' %}"> SignUP? </a>
+
+{% endblock content%}

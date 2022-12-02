@@ -1,0 +1,14 @@
+{% extends 'partials/base.html'%}
+{% load static %}
+
+
+{%block content%}
+
+    <form method="post">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button type="submit"> Search Flights </button>
+
+    </form>
+
+{%endblock content%}

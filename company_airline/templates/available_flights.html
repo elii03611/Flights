@@ -1,0 +1,21 @@
+{% extends 'partials/base.html'%}
+{% load static %}
+
+
+{%block content%} <hr> <br>
+ 
+        
+        {%for flight in flights %}
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text"> </p>
+          <a class="btn btn-primary">{{flight}}<a/> <br> <br>
+          <a href= "{% url 'create_ticket' request.user.id flight.id %}" class="btn btn-primary"  onclick="return confirm('Are you sure you want order flight ?')"> Order Flight</a> <br> <br>
+        </div>
+        </div>
+        {% endfor %}
+
+
+{%endblock content%}

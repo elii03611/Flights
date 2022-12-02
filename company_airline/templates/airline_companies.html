@@ -1,0 +1,11 @@
+{% extends 'partials/base.html' %} 
+
+
+    {%block content%} <hr>
+    <h1>Airline Companies:</h1>
+    {% for airline in airline_companies %}
+    <a href="{{airline.get_absolute_url}}">{{airline}}</a>     <br> <br>
+    {% endfor %}
+    
+      
+    {%endblock content%} 

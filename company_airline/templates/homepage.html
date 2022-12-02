@@ -1,0 +1,94 @@
+{% extends 'partials/base.html' %}
+{%block content%} <br><br>
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content=""> 
+    <title>homepage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<body>
+    <div style="text-align:center; font-size:30px;">
+    Hello: {{user}}
+    </div>
+    <br><br>
+    <main role="main" class="container border">
+        
+
+    <h3>Search Flights</h3>
+    <form method="GET" action=".">
+        <div class="form-row">
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="airline_company_id" placeholder="Airline Company..." />
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </span>
+                </div>
+            </div>        
+        </div>
+        <div class="form-row">
+          <div class="form-group col-12">
+              <div class="input-group">
+                  <input class="form-control py-2 border-right-0 border" type="search" name="origin_country_id" placeholder="From..." />
+                  <span class="input-group-append">
+                      <div class="input-group-text bg-transparent">
+                          <i class="fa fa-search"></i>
+                      </div>
+                  </span>
+              </div>
+          </div>        
+        </div>  
+        <div class="form-row">
+            <div class="form-group col-12">
+                <div class="input-group">
+                    <input class="form-control py-2 border-right-0 border" type="search" name="destination_country_id" placeholder="To..." />
+                    <span class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </span>
+                </div>
+            </div>        
+        </div>
+    <div class="form-group col-md-2 col-lg-2">
+        <label for="publishDateMin">departure time:</label>
+        <input type="date" name="departure_time">
+    </div>
+    <div class="form-group col-md-2 col-lg-2">
+        <label for="publishDateMax">landing time:</label>   
+        <input type="date" name="landing_time">
+    </div> <br>
+
+    <button type="submit" class="btn btn-primary" name = "search">Search</button>
+   
+    </form >
+    </main> <br>
+
+
+
+    {%for flight in queryset.all %}
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+      <p class="card-text"> </p>    
+      <a class="btn btn-primary">{{flight}}<a/> <br> <br>
+      <a href="{% url 'create_ticket' request.user.id flight.id %}" class="btn btn-primary" onclick="return confirm('Are you sure you want order flight ?')"> Order Flight</a> <br> <br>
+    </div>
+    </div>
+    {% endfor %}
+
+{%endblock content%}
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+{% extends 'partials/base.html' %} 
+
+
+    {%block content%} <hr>
+    <h1>Flights</h1>
+    {% for ticket in tickets %} <hr>
+    Tickets ID: {{ticket.id}} {{ticket.flight}} <hr> <br> <br>
+    {% endfor %}
+
+      
+    {%endblock content%}

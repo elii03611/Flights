@@ -1,0 +1,16 @@
+{% extends 'partials/base.html' %} 
+
+
+    {%block content%} <hr>
+    <form method="post">
+    {%csrf_token%}
+    Airline Company ID: {{airline_companies.id}} <br>
+    Name: {{airline_companies.name}} <br>
+    Country: {{airline_companies.country}} <br>
+    </form>
+    <hr>
+ 
+
+
+
+    {%endblock content%}

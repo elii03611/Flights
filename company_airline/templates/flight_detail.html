@@ -1,0 +1,18 @@
+{% extends 'partials/base.html' %} 
+
+
+    {%block content%} <hr>
+    Flight Id: {{f_detail.id}} <br>
+    Name Airline Company: {{f_detail.airline_company}} <br>
+    Flight From: {{f_detail.origin_country}} <br>
+    To: {{f_detail.destination_country}} <br> 
+    departure time: {{f_detail.departure_time}} <br>
+    landing time: {{f_detail.landing_time}} <br> <br>
+    <a href="{% url 'flights' %}">go back to Flights</a> <br>
+
+    <hr>
+
+
+    {%endblock content%}
+
+
