@@ -35,12 +35,13 @@ class Airline_Companie(models.Model):
     
 
 class Flight(models.Model):
-    airline_company = models.ForeignKey(Airline_Companie,on_delete=models.CASCADE,related_name='airline_company')
+    airline_company = models.ForeignKey(Airline_Companie,on_delete=models.CASCADE,related_name='airline_company', null= True)
     origin_country = models.ForeignKey(Countrie,on_delete=models.CASCADE)
     destination_country = models.ForeignKey(Countrie,on_delete=models.CASCADE, related_name= 'destination', null= True)
     departure_time = models.DateTimeField(null=True)
     landing_time = models.DateTimeField(null=True)
     number_tickets = models.IntegerField(null=True,default=1,validators=[MinValueValidator(0),MaxValueValidator(200)])
+
 
     # def clean(self):
     #     if self.departure_time < self.landing_time:

@@ -10,9 +10,5 @@ class CustomersForm(forms.ModelForm):
         exclude = ['user']
         
 
-    # def __init__(self, user, *args, **kwargs):
-    #     super(CustomersForm, self).__init__(*args, **kwargs)
-    #     if not user.is_staff:
-    #         self.fields['user'].widget = forms.HiddenInput()
 
 

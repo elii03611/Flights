@@ -31,7 +31,6 @@ urlpatterns = [
 
     path('',search, name='homepage'),
     path('homepage/',search, name='homepage'),
-    path('flights/',FlightsList.as_view(), name='flights'),
     path('order_flight/', create_flight, name='order_flight'),
     path('delete_flight/<flight_id>', views.delete_flight, name='delete_flight'),
     path('update_flight/<flight_id>', views.update_flight, name='update_flight'),
@@ -45,6 +44,7 @@ urlpatterns = [
     path('airline/',AirlineCompaniesList.as_view(), name='airline'),
     path('customers/', CustomersList.as_view(),name='customers'),
     path('tickets/', TicketsList.as_view(),name='tickets'),
+    path('flights/',FlightsList.as_view(), name='flights'),
     path('customer_detail/<int:pk>',CustomerDetail.as_view(), name='customer_detail'),
     path('airline_companies_detail/<int:pk>',AirlineCompaniesDetail.as_view(), name='airline_companies_detail'),
 

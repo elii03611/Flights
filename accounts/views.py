@@ -2,9 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth.models import Group
 from django.shortcuts import redirect, render
-from accounts.models import Customer
 from .forms import CustomersForm
 
 # Create your views here.
@@ -77,7 +75,7 @@ def profile_user(request):
     if request.user.is_superuser:
         return redirect('homepage')  
     elif request.user:
-        profile = request.user.customers
+        profile = request.user.customer
     context = {'profile' : profile}
     return render(request, 'profile_user.html', context)
 
@@ -85,7 +83,7 @@ def profile_user(request):
 @login_required(login_url='login')
 def update_user(request):
 
-    profile = request.user.customers
+    profile = request.user.customer
     form = CustomersForm(request.POST or None,instance=profile)
 
     context = {'form': form}

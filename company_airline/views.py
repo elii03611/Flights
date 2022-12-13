@@ -13,11 +13,6 @@ from datetime import date, datetime
 # Create your views here.
 
 
-    # reservations = user.visitor.reservations.all()
-    # context['past_reservations'] = reservations.filter(check_out__lt = date.today())
-    # context['future_reservations'] = reservations.filter(check_in__gt = date.today()).order_by('check_in')
-    # context['current_reservations'] = reservations.filter(Q(check_in__gte = date.today()) & Q(check_out__gt = date.today()))
-
 
 def search(request):
     flight = Flight.objects.all()
@@ -163,7 +158,7 @@ class FlightsList(ListView):
     context_object_name= 'flights'
     template_name= 'flights.html'
 
-
+ 
 
 class AirlineCompaniesList(ListView):
     
@@ -181,6 +176,7 @@ class TicketsList(ListView):
 
 
     def get_queryset(self,*args,**kargs):
+
         user = User.objects.get(username = self.request.user)
         customer = Customer.objects.get(user_id=user.id)
         all_ticket = super(TicketsList,self).get_queryset(*args,**kargs)

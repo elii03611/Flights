@@ -15,7 +15,11 @@
 </head>
 <body>
     <div style="text-align:center; font-size:30px;">
+    {%if user.is_staff%}
+        Hello Staff: {{user}}
+    {%else%}
     Hello: {{user}}
+    {%endif%}
     </div>
     <br><br>
     <main role="main" class="container border">
