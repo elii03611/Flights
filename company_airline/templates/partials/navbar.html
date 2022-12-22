@@ -9,6 +9,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{%url "order_flight"%}">order_flight</a>
         </li>
+
         {% if not user.is_staff %}
         {% if user.is_authenticated %}
         <li class="nav-item">
@@ -16,7 +17,7 @@
         </li>  
         {% endif %}
         {% endif %}
-   
+
 
         {% if user.is_staff %}
         <li class="nav-item">

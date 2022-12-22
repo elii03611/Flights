@@ -1,98 +1,257 @@
-{% extends 'partials/base.html' %}
-{%block content%} <br><br>
+{% extends 'partials/base.html' %} 
+{%block content%} 
 {% load static %}
-
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
   <head>
-    <meta charset="utf-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content=""> 
-    <title>homepage</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flight</title>
+  </head>
 
-</head>
-<body>
-    <div style="text-align:center; font-size:30px;">
-    {%if user.is_staff%}
-        Hello Staff: {{user}}
-    {%else%}
-    Hello: {{user}}
-    {%endif%}
-    </div>
-    <br><br>
-    <main role="main" class="container border">
-        
+  <body>
+    <div id="fh5co-wrapper">
+      <div id="fh5co-page">
+        <header id="fh5co-header-section" class="sticky-banner">
+          <div class="container">
+            <div class="nav-header">
+              <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"
+                ><i></i
+              ></a>
+              <h1 id="fh5co-logo">
+                <a href="index.html"><i class="icon-airplane"></i>Travel</a>
+              </h1>
+              <!-- START #fh5co-menu-wrap -->
+              <nav id="fh5co-menu-wrap" role="navigation">
+                <ul class="sf-menu" id="fh5co-primary-menu">
+                  <li><a href="index.html">Home</a></li>
+                  <li class="active"><a href="flight.html">Flights</a></li>
+                  <li><a href="hotel.html">a</a></li>
+                  <li><a href="car.html">b</a></li>
+                  <li><a href="blog.html">c</a></li>
+                  <li><a href="contact.html">d</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </header>
 
-    <h3>Search Flights</h3>
-    <form method="GET" action=".">
-        <div class="form-row">
-            <div class="form-group col-12">
-                <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="airline_company_id" placeholder="Airline Company..." />
-                    <span class="input-group-append">
-                        <div class="input-group-text bg-transparent">
-                            <i class="fa fa-search"></i>
+        <!-- end:header-top -->
+
+        <div class="body" class="fh5co-hero">
+          <div class="fh5co-overlay"></div>
+          <div
+            class="fh5co-cover"
+            data-stellar-background-ratio="0.5"
+            style="background-image: url(images/cover_bg_3.jpg)"
+          >
+            <div class="desc">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-5 col-md-8">
+                    <!-- <a href="index.html" id="main-logo">Travel</a> -->
+                    <div class="tabulation animate-box">
+                      <!-- Nav tabs -->
+                      <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                          <a
+                            href="#flights"
+                            aria-controls="flights"
+                            role="tab"
+                            data-toggle="tab"
+                            >Flights</a
+                          >
+                        </li>
+                      </ul>
+
+                      <form method="GET" action=".">
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                          <div
+                            role="tabpanel"
+                            class="tab-pane active"
+                            id="flights"
+                          >
+                            <div class="row">
+                              <div class="col-xxs-12 col-xs-6 mt">
+                                <div class="input-field">
+                                  <label for="from">From:</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    name="origin_country_id"
+                                    id="from-place"
+                                    placeholder="from..."
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-xxs-12 col-xs-6 mt">
+                                <div class="input-field">
+                                  <label for="from">To:</label>
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    name="destination_country_id"
+                                    id="from-place"
+                                    placeholder="to..."
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-xxs-12 col-xs-6 mt alternate">
+                                <div class="input-field">
+                                  <label for="date-start">Check In:</label>
+                                  <input
+                                    type="date"
+                                    class="form-control"
+                                    name="departure_time"
+                                    id="date-start"
+                                    placeholder="mm/dd/yyyy"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-xxs-12 col-xs-6 mt alternate">
+                                <div class="input-field">
+                                  <label for="date-end">Check Out:</label>
+                                  <input
+                                    type="date"
+                                    class="form-control"
+                                    name="landing_time"
+                                    id="date-end"
+                                    placeholder="mm/dd/yyyy"
+                                  />
+                                </div>
+                              </div>
+                              <div class="col-xs-12">
+                                <button
+                                  type="submit"
+                                  class="btn btn-primary btn-block"
+                                  name="Search Flight"
+                                ></button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                    </span>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-            </div>        
-        </div>
-        <div class="form-row">
-          <div class="form-group col-12">
-              <div class="input-group">
-                  <input class="form-control py-2 border-right-0 border" type="search" name="origin_country_id" placeholder="From..." />
-                  <span class="input-group-append">
-                      <div class="input-group-text bg-transparent">
-                          <i class="fa fa-search"></i>
-                      </div>
-                  </span>
               </div>
-          </div>        
-        </div>  
-        <div class="form-row">
-            <div class="form-group col-12">
-                <div class="input-group">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="destination_country_id" placeholder="To..." />
-                    <span class="input-group-append">
-                        <div class="input-group-text bg-transparent">
-                            <i class="fa fa-search"></i>
-                        </div>
-                    </span>
-                </div>
-            </div>        
+            </div>
+          </div>
         </div>
-    <div class="form-group col-md-2 col-lg-2">
-        <label for="publishDateMin">departure time:</label>
-        <input type="date" name="departure_time">
+      </div>
+
+      {%for flight in queryset.all %} <br />
+      <a class="btn btn-primary"
+        >{{flight}}<a /> <br /><br />
+        <a
+          href="{% url 'create_ticket' request.user.id flight.id %}"
+          class="btn btn-primary"
+          onclick="return confirm('Are you sure you want order flight ?')"
+        >
+          Order Flight</a
+        >
+        <br />
+        <br />
+
+        {% endfor %}
+
+        <footer>
+          <div id="footer">
+            <div class="container">
+              <div class="row row-bottom-padded-md">
+                <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                  <h3>About Travel</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Debitis iure ipsum eveniet explicabo perferendis?
+                    Consequuntur nostrum mollitia asperiores. Reiciendis ipsam
+                    minus reprehenderit ut commodi. Alias vitae earum quod
+                    consectetur doloribus.
+                  </p>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                  <h3>Top Flights Routes</h3>
+                  <ul>
+                    <li>
+                      <a href="https://en.wikipedia.org/wiki/Manila"
+                        >Manila flights</a
+                      >
+                    </li>
+                    <li><a href="#">Dubai flights</a></li>
+                    <li><a href="#">Bangkok flights</a></li>
+                    <li><a href="#">Tokyo Flight</a></li>
+                    <li><a href="#">New York Flights</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                  <h3>Top Hotels</h3>
+                  <ul>
+                    <li><a href="#">Boracay Hotel</a></li>
+                    <li><a href="#">Dubai Hotel</a></li>
+                    <li><a href="#">Singapore Hotel</a></li>
+                    <li><a href="#">Manila Hotel</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                  <h3>Interest</h3>
+                  <ul>
+                    <li><a href="#">Beaches</a></li>
+                    <li><a href="#">Family Travel</a></li>
+                    <li><a href="#">Budget Travel</a></li>
+                    <li><a href="#">Food &amp; Drink</a></li>
+                    <li><a href="#">Honeymoon and Romance</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                  <h3>Best Places</h3>
+                  <ul>
+                    <li><a href="#">Boracay Beach</a></li>
+                    <li><a href="#">Dubai</a></li>
+                    <li><a href="#">Singapore</a></li>
+                    <li><a href="#">Hongkong</a></li>
+                  </ul>
+                </div>
+                <div class="col-md-2 col-sm-2 col-xs-12 fh5co-footer-link">
+                  <h3>Affordable</h3>
+                  <ul>
+                    <li><a href="#">Food &amp; Drink</a></li>
+                    <li><a href="#">Fare Flights</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                  <p class="fh5co-social-icons">
+                    <a href="https://twitter.com/"
+                      ><i class="icon-twitter2"></i
+                    ></a>
+                    <a href="https://www.facebook.com/"
+                      ><i class="icon-facebook2"></i
+                    ></a>
+                    <a href="https://www.instagram.com/"
+                      ><i class="icon-instagram"></i
+                    ></a>
+                    <a href="https://dribbble.com/"
+                      ><i class="icon-dribbble2"></i
+                    ></a>
+                    <a href="https://www.youtube.com/"
+                      ><i class="icon-youtube"></i
+                    ></a>
+                  </p>
+                  <p>
+                    All Rights Reserved. <br />
+                    <i class="icon-heart3"></i>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+        {%endblock content%}
     </div>
-    <div class="form-group col-md-2 col-lg-2">
-        <label for="publishDateMax">landing time:</label>   
-        <input type="date" name="landing_time">
-    </div> <br>
-
-    <button type="submit" class="btn btn-primary" name = "search">Search</button>
-   
-    </form >
-    </main> <br>
-
-
-
-    {%for flight in queryset.all %}
-    <div class="card-header">
-    </div>
-    <div class="card-body">
-      <h5 class="card-title"></h5>
-      <p class="card-text"> </p>    
-      <a class="btn btn-primary">{{flight}}<a/> <br> <br>
-      <a href="{% url 'create_ticket' request.user.id flight.id %}" class="btn btn-primary" onclick="return confirm('Are you sure you want order flight ?')"> Order Flight</a> <br> <br>
-    </div>
-    </div>
-    {% endfor %}
-
-{%endblock content%}
-
-</body>
-
+  </body>
 </html>
