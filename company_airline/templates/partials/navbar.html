@@ -1,69 +1,41 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{%url "homepage"%}">AIRLINE</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">       
-        <li class="nav-item">
-          <a class="nav-link" href="{%url "order_flight"%}">order_flight</a>
-        </li>
+  <nav  class="navbar navbar-expand-lg navbar-dark bg-dark">      
+            <ul class="sf-menu" id="fh5co-primary-menu">
+                <li>
+                  <a href={%url "homepage"%}><i class="icon-airplane">&nbsp</i>Travel</a>
+                </li>
+                <li ><a href="{%url "order_flight"%}">Order Flight</a></li>
+                {% if user.is_staff %}
+                <li ><a href="{%url "flights"%}">all Flight</a></li>
+                {% endif %}
+                {% comment %} <li ><a href="{%url "a"%}">About Us</a></li> {% endcomment %}
+                <li ><a href="#">Conect</a></li>
+            </ul> 
+            <ul class="sf-menu" id="fh5co-primary-menu">
+                <li>
+                    <a href="vacation.html" class="fh5co-sub-ddown" >Staff</a>
+                    <ul class="fh5co-sub-menu">
+                       <li ><a  href="{%url "add_countries"%}">Add Countries</a></li>
+                       <li ><a  href="{%url "add_customers"%}">Add Customers</a></li>
+                       <li ><a  href="{%url "add_airline_companies"%}">Add Airline Companies</a></li>
+                       <li ><a  href="{%url "add_flights"%}">Add Flights</a></li>
+                    </ul>
+                </li>    
+            </ul>
+            <ul class="sf-menu" id="fh5co-primary-menu" style="position: fixed; right: 20px" >
+                    <a href="vacation.html" class="fh5co-sub-ddown" >{{user}}</a>
+                    <ul class="fh5co-sub-menu">   
+                        {%if user.is_authenticated %}
+                        <li><a href = "{%url 'profile_user'%}"> Profile </a></li>
+                        <li><a href = "{%url 'logout'%}"> Log Out </a></li>
+                        {% else %}    
+                        <li><a href = "{%url 'login'%}"> Log in </a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
 
-        {% if not user.is_staff %}
-        {% if user.is_authenticated %}
-        <li class="nav-item">
-          <a class="nav-link" href="{%url "tickets"%}">Your Flights</a>
-        </li>  
-        {% endif %}
-        {% endif %}
-
-
-        {% if user.is_staff %}
-        <li class="nav-item">
-          <a class="nav-link" href="{%url "flights"%}">all Flights</a>
-        </li>   
-        <li class="nav-item">
-            <a class="nav-link" href="{%url "staff_homepage"%}">Staff Homepage</a>
-        </li>   
-        <li class="nav-item">
-          <a class="nav-link" href="{%url "admin:index"%}">Admin</a>
-        </li>     
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Staff
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li ><a class="dropdown-item" href="{%url "add_countries"%}">Add Countries</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{%url "add_customers"%}">Add Customers</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{%url "add_airline_companies"%}">Add Airline Companies</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{%url "add_flights"%}">Add Flights</a></li>
-            <li><hr class="dropdown-divider"></li>
-          </ul>
-            
-          {% endif %}
-            
-        <li style="position: fixed; right: 20px">
-            <div class="dropdown">
-                <a> {{user}}</a>
-                {%if user.is_authenticated %}
-                <div class="dropdown-content">
-                    
-                    <a href = "{%url 'profile_user'%}"> Profile </a>
-                    <a href="{%url 'logout'%}"> Log Out</a>
-                {% else %}    
-                    <a href="{%url 'login'%}"> Log in</a>
-                    
-                </div>
-                {%endif %}
-            </div>
-        </li>
-
-      </ul>
-    </div>
-  </div>
-</nav>
+    
+                        
+                 
+                
+  </nav>

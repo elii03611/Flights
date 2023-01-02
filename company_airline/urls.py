@@ -30,7 +30,6 @@ from company_airline import views
 urlpatterns = [
 
     path('',search, name='homepage'),
-    path('homepage/',search, name='homepage'),
     path('order_flight/', create_flight, name='order_flight'),
     path('delete_flight/<flight_id>', views.delete_flight, name='delete_flight'),
     path('update_flight/<flight_id>', views.update_flight, name='update_flight'),

@@ -9,7 +9,6 @@ from .models import Airline_Companie, Countrie, Customer, Flight, Ticket
 from django.http import HttpResponse
 from django.db.models import Q
 from datetime import date, datetime
-
 # Create your views here.
 
 
@@ -26,27 +25,30 @@ def search(request):
         return param != '' and param is not None
 
     qs = None
-
+ 
     if is_valid_queryparam(airline_company):
         qs = flight.filter(airline_company__name__icontains=airline_company)
     if is_valid_queryparam(origin_country):
         qs = flight.filter(origin_country__countries__icontains=origin_country)
     if is_valid_queryparam(destination_country):
-        qs = qs.filter(
-            destination_country__countries__icontains=destination_country)
+        qs = qs.filter(destination_country__countries__icontains=destination_country)
     if is_valid_queryparam(departure_time):
         qs = qs.filter(departure_time__icontains=departure_time)
     if is_valid_queryparam(landing_time):
         qs = qs.filter(landing_time__icontains=landing_time)
 
     context = {
-        'queryset': qs
+        'queryset': qs,
+        "org":origin_country,
+        "dest":destination_country,
+        "dtime" :departure_time,
+        "ltime" : landing_time
     }
     if qs:
         return render(request, 'flights_list.html', context)
     else:
-        return render(request, "homepage.html", context)
-
+        return render(request, 'homepage.html', context)
+    
 
 @login_required
 def create_flight(request):
